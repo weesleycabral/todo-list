@@ -52,6 +52,24 @@ export class TodoComponent implements OnInit {
     this.todos = [];
   }
 
+  deleteIndividualTodo(id: any) {
+    const todo = this.todos.indexOf(id)
+    this.todos.splice(todo, 1);
+    this.saveTodo();
+  }
+
+  setDone(ev: any, id: any) {
+    console.log(ev.target.checked)
+    // this.todos.find((attr) => attr.id === id)?.done = ev.target.checked;
+    const todosIndex = this.todos.findIndex((attr) => attr.id === id)
+
+    if (todosIndex !== -1) {
+      const eventValue = ev.target.checked
+      this.todos[todosIndex].done = eventValue
+    }
+    this.saveTodo();
+  }
+
 
 
 }
