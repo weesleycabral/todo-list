@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Todo } from 'src/app/models/todo.models';
 
 @Component({
@@ -10,7 +11,9 @@ export class TodoComponent implements OnInit {
   public todos: Todo[] = [];
   public title: string;
 
-  constructor() { }
+  constructor(
+    private toast: ToastrService
+  ) { }
 
   ngOnInit(): void {
     // let todosSalvos = localStorage.getItem('todo');
@@ -50,12 +53,16 @@ export class TodoComponent implements OnInit {
   clearTodo() {
     localStorage.removeItem('todo');
     this.todos = [];
+    this.toast.success('Você excluiu todos as tarefas com sucesso!', 'Toastr fun!');
   }
 
-  deleteIndividualTodo(id: any) {
-    const todo = this.todos.indexOf(id)
-    this.todos.splice(todo, 1);
-    this.saveTodo();
+  deleteIndividualTodo(id: any, title: string) {
+    if(confirm(`Deseja mesmo excluir a tarefa "${title}"?`)) {
+      const todo = this.todos.findIndex((attr) => attr.id === id)
+      this.todos.splice(todo, 1);
+      this.saveTodo();
+    this.toast.success('Tarefa deletada com sucesso!');
+    }
   }
 
   setDone(ev: any, id: any) {

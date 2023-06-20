@@ -16,9 +16,16 @@
 }
 
 .showTodo {
+  margin-top: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
+    // background-color: #e2e2e2;
+    // width: 1000px;
+    // margin: auto;
+    // padding: 20px;
+    // border-radius: 20px;
+    // height: 500px;
 }
 
 ul,
@@ -26,7 +33,30 @@ li {
     list-style: none;
 }
 
+i {
+  color: black;
+}
+
 i:hover {
     cursor: pointer;
     color: red;
+}
+
+table {
+  width: 50%;
+  // height: 80%;
+}
+
+.form-control {
+  width: 20%;
+}
+
+
+.form-control:focus {
+  outline: 2px solid black;
+}
+
+.form-control:hover {
+  border: 1px solid black;
+  outline: 2px solid black;
 }

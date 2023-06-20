@@ -4,13 +4,13 @@
 
 <div class="search">
     <input placeholder="Digite sua tarefa...." (keyup.enter)="addTodo()" type="text" name="" id="" [(ngModel)]="title"
-        autofocus>
-    <button (click)="addTodo()" color="primary">Adicionar</button>
-    <button data-bs-toggle="modal" data-bs-target="#exampleModal">Limpar Tarefas</button>
+        autofocus class="form-control shadow-none">
+    <button (click)="addTodo()" class="btn btn-primary">Adicionar</button>
+    <button data-bs-toggle="modal" data-bs-target="#exampleModal"  class="btn btn-danger">Limpar Tarefas</button>
 </div>
 
-<div class="showTodo">
-    <table class="table table-striped">
+<div class="showTodo mt-5">
+    <table class="table table-striped" *ngIf="todos.length > 0">
         <thead>
             <tr>
                 <th scope="col">#</th>
@@ -20,11 +20,11 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let todo of todos">
-                <th scope="row">{{ todo.id }}</th>
+            <tr *ngFor="let todo of todos; let i = index;">
+                <th scope="row">{{ i + 1 }}</th>
                 <td>{{ todo.title }}</td>
                 <td><input type="checkbox" name="" id="" (change)="setDone($event, todo.id)" [checked]="todo.done"></td>
-                <td><i (click)="deleteIndividualTodo(todo.id)" class="ph-bold ph-trash"></i></td>
+                <td><i (click)="deleteIndividualTodo(todo.id, todo.title)" class="ph-bold ph-trash"></i></td>
             </tr>
         </tbody>
     </table>
