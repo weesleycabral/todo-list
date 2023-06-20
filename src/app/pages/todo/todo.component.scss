@@ -1,0 +1,27 @@
+.titulo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.titulo>h1 {
+    font-size: 3rem;
+}
+
+.search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.showTodo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ul,
+li {
+    list-style: none;
+}
