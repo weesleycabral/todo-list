@@ -32,6 +32,7 @@ export class TodoComponent implements OnInit {
   addTodo() {
     if (this.title && this.title.trim()) {
       // console.log(this.title);
+      // this.todos = [];
       const title = this.title;
       const id = this.todos.length + 1;
       this.todos.push(new Todo(id, title, false))
@@ -53,7 +54,9 @@ export class TodoComponent implements OnInit {
   loadTodo() {
     const todosSalvos = localStorage.getItem('todo');
     this.todos = JSON.parse(todosSalvos!);
-    this.todos.sort((x) => x.done ? 1 : -1);
+    if (this.todos != null) {
+      this.todos!.sort((x) => x.done ? 1 : -1);
+    }
   }
 
   clearTodo() {

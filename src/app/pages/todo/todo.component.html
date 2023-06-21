@@ -6,7 +6,7 @@
     <input placeholder="Digite sua tarefa...." (keyup.enter)="addTodo()" type="text" name="" id="" [(ngModel)]="title"
         autofocus class="form-control shadow-none">
     <button (click)="addTodo()" class="btn btn-primary">Adicionar</button>
-    <button data-bs-toggle="modal" data-bs-target="#exampleModal"  class="btn btn-danger">Limpar Tarefas</button>
+    <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-danger">Limpar Tarefas</button>
 </div>
 
 <div class="showTodo mt-5">
@@ -32,6 +32,13 @@
         <li> <input type="checkbox" name="" id="">
         </li>
     </ul> -->
+</div>
+
+<div *ngIf="todos.length == 0" class="container-img">
+    <span class="text">Você não tem nenhuma tarefa no momento.</span>
+    <div class="img">
+        <img src="/assets/notfound.svg" alt="">
+    </div>
 </div>
 
 
