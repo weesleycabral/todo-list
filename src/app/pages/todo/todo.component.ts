@@ -31,7 +31,7 @@ export class TodoComponent implements OnInit {
 
   addTodo() {
     if (this.title && this.title.trim()) {
-      console.log(this.title);
+      // console.log(this.title);
       const title = this.title;
       const id = this.todos.length + 1;
       this.todos.push(new Todo(id, title, false))
@@ -70,7 +70,7 @@ export class TodoComponent implements OnInit {
   }
 
   setDone(ev: any, id: any) {
-    console.log(ev.target.checked)
+    // console.log(ev.target.checked)
     // this.todos.find((attr) => attr.id === id)?.done = ev.target.checked;
     const todosIndex = this.todos.findIndex((attr) => attr.id === id)
 
