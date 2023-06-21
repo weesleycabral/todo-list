@@ -37,6 +37,7 @@ export class TodoComponent implements OnInit {
       this.todos.push(new Todo(id, title, false))
       this.saveTodo();
       this.title = '';
+      this.todos.sort((x) => x.done ? 1 : -1);
     } else {
       this.toast.error('Insira um titulo da tarefa.')
     }
@@ -52,6 +53,7 @@ export class TodoComponent implements OnInit {
   loadTodo() {
     const todosSalvos = localStorage.getItem('todo');
     this.todos = JSON.parse(todosSalvos!);
+    this.todos.sort((x) => x.done ? 1 : -1);
   }
 
   clearTodo() {
@@ -77,6 +79,7 @@ export class TodoComponent implements OnInit {
     if (todosIndex !== -1) {
       const eventValue = ev.target.checked
       this.todos[todosIndex].done = eventValue
+      this.todos.sort((x) => x.done ? 1 : -1);
     }
     this.saveTodo();
   }
