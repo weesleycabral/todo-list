@@ -30,13 +30,17 @@ export class TodoComponent implements OnInit {
   // }
 
   addTodo() {
-    console.log(this.title);
-    const title = this.title;
-    console.log(title);
-    const id = this.todos.length + 1;
-    this.todos.push(new Todo(id, title, false))
-    this.saveTodo();
-    this.title = '';
+    if (this.title && this.title.trim()) {
+      console.log(this.title);
+      const title = this.title;
+      const id = this.todos.length + 1;
+      this.todos.push(new Todo(id, title, false))
+      this.saveTodo();
+      this.title = '';
+    } else {
+      this.toast.error('Insira um titulo da tarefa.')
+    }
+
 
   }
 
@@ -53,15 +57,15 @@ export class TodoComponent implements OnInit {
   clearTodo() {
     localStorage.removeItem('todo');
     this.todos = [];
-    this.toast.success('Você excluiu todos as tarefas com sucesso!', 'Toastr fun!');
+    this.toast.success('Você excluiu todos as tarefas com sucesso!');
   }
 
   deleteIndividualTodo(id: any, title: string) {
-    if(confirm(`Deseja mesmo excluir a tarefa "${title}"?`)) {
+    if (confirm(`Deseja mesmo excluir a tarefa "${title}"?`)) {
       const todo = this.todos.findIndex((attr) => attr.id === id)
       this.todos.splice(todo, 1);
       this.saveTodo();
-    this.toast.success('Tarefa deletada com sucesso!');
+      this.toast.success('Tarefa deletada com sucesso!');
     }
   }
 
